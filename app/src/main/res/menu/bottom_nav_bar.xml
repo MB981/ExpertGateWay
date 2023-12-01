@@ -1,21 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:float="http://schemas.android.com/apk/res-auto">
+  >
 
     <item
         android:id="@+id/home"
-        android:title="@string/home_bottom"
-        android:icon="@drawable/home_two" />
+        android:title="Home"
+
+        />
     <item
         android:id="@+id/location"
-        android:title="@string/location_bottom"
-        android:icon="@drawable/location_img"/>
+        android:title="Location"
+
+        />
     <item
         android:id="@+id/notification"
-        android:title="@string/notification_bottom"
-        android:icon="@drawable/notification_icon"/>
+        android:title="Notifications"
+
+        />
     <item
         android:id="@+id/settings"
-        android:title="@string/settings_bottom"
-        android:icon="@drawable/setting_icon"/>
+        android:title="Settings"
+
+        />
+
 </menu>
+    <!--        android:icon="@drawable/setting_icon"-->
