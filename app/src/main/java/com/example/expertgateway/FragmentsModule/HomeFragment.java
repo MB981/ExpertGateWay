@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.example.expertgateway.Helper.ApiClient;
 import com.example.expertgateway.Helper.ApiService;
@@ -68,12 +69,6 @@ public class HomeFragment extends Fragment {
 
     public void getHome() {
 
-
-/*// used to freeze the touch when progress is loading
-        getActivity().getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
-                WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);*/
-
-// sending data to the API
         ApiService apiService = ApiClient.getClient().create(ApiService.class);
         Call<HomeModel> call = apiService.getHome();
         call.enqueue(new Callback<HomeModel>() {
@@ -87,13 +82,10 @@ public class HomeFragment extends Fragment {
                     getActivity().runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            getActivity().getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
-                            if (keyModel.getMessage() == "success") {
+//                            getActivity().getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
 
-                            } else {
+                            Toast.makeText(getActivity(), "" + keyModel.getMessage(), Toast.LENGTH_SHORT).show();
 
-
-                            }
                         }
                     });
                 } else {
@@ -101,8 +93,6 @@ public class HomeFragment extends Fragment {
                     getActivity().runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-//                            getActivity().getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
-//                            progress.setVisibility(View.GONE);
                             Snackbar.make(getActivity().findViewById(android.R.id.content),
                                     "Data is null", Snackbar.LENGTH_LONG).show();
                         }
@@ -116,11 +106,8 @@ public class HomeFragment extends Fragment {
 
                     @Override
                     public void run() {
-//                        getActivity().getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
-//                        progress.setVisibility(View.GONE);
                         Snackbar.make(getActivity().findViewById(android.R.id.content),
                                 "Response Failed", Snackbar.LENGTH_LONG).show();
-
                     }
                 });
             }
