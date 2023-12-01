@@ -8,14 +8,18 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.example.expertgateway.FragmentsModule.HomeFragment;
+import com.example.expertgateway.databinding.ActivityMainBinding;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener{
+public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
+    ActivityMainBinding mBinding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        mBinding = ActivityMainBinding.inflate(getLayoutInflater());
+        View view = mBinding.getRoot();
+        setContentView(view);
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
 
@@ -24,9 +28,8 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
 
     }
+
     HomeFragment homeFragment = new HomeFragment();
-
-
 
 
     @Override
