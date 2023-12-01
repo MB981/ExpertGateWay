@@ -11,6 +11,6 @@ import retrofit2.http.POST;
 
 import retrofit2.Call;
 public interface ApiService {
-    @GET("/Sections/getAllSectionsDetails?countryId=1&isMobile=true")
+    @GET("Sections/getAllSectionsDetails?countryId=1&isMobile=true")
     Call<HomeModel> getHome();
 }

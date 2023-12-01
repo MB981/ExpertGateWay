@@ -15,7 +15,7 @@ public class ApiClient {
 
 
 /*    /Sections/getAllSectionsDetails?countryId=1&isMobile=true    */
-    public static String BASE_URL ="https://expertgateway-staging.findanexpert.net/homepage_svc/pb";
+    public static String BASE_URL ="https://expertgateway-staging.findanexpert.net/homepage_svc/pb/";
 //    https://expertgateway-staging.findanexpert.net/homepage_svc/pb/Sections/getAllSectionsDetails?countryId=1&isMobile=true
     private static Retrofit retrofit = null;
 
