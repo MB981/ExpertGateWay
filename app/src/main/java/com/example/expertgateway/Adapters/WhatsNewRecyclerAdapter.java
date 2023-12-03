@@ -135,7 +135,6 @@ public class WhatsNewRecyclerAdapter extends RecyclerView.Adapter {
                         if (dataList.get(position).getSectionnew() != null) {
                             BannerAdapter sliderAdapter = new BannerAdapter(mContext, dataList.get(position).getSectionnew(), ((SliderViewHolder1) holder).bannerViewBinding.sliderViewpagerFragmentHome);
                             ((SliderViewHolder1) holder).bannerViewBinding.sliderViewpagerFragmentHome.setAdapter(sliderAdapter);
-                            // Start auto-slider when the ViewPager is created (typically in onResume of Fragment/Activity)
                             sliderAdapter.startAutoSlider();
                         }
                         break;
@@ -154,7 +153,6 @@ public class WhatsNewRecyclerAdapter extends RecyclerView.Adapter {
                         if (dataList.get(position).getSectionnew() != null) {
                             BannerAdapter sliderAdapter2 = new BannerAdapter(mContext, dataList.get(position).getSectionnew(), ((SliderViewHolder2) holder).bannerViewTwoBinding.sliderViewpagerFragmentHome);
                             ((SliderViewHolder2) holder).bannerViewTwoBinding.sliderViewpagerFragmentHome.setAdapter(sliderAdapter2);
-                            // Start auto-slider when the ViewPager is created (typically in onResume of Fragment/Activity)
                             sliderAdapter2.startAutoSlider();
                         }
                         break;

@@ -154,12 +154,5 @@ public class HomeFragment extends Fragment {
 
     }
 
-/*    public void servicesAdapter(List<HomeModel.Sectionnew> services) {
-        // Assuming binding.rlServices is your RecyclerView
-        binding.rlServices.setLayoutManager(new GridLayoutManager(getActivity(), 5));
-// Set your adapter
-        ServicesAdapter servicesAdapter = new ServicesAdapter(services, getActivity());
-        binding.rlServices.setAdapter(servicesAdapter);
 
-    }*/
 }
