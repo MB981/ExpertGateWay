@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cvCardMain"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/_320sdp"
+    android:layout_margin="@dimen/_5sdp"
+
+    app:cardCornerRadius="@dimen/_10sdp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+       >
+<ImageView
+    android:id="@+id/ivImage"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/card_img"/>
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_135sdp"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="bottom"
+            android:layout_margin="@dimen/_15sdp"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="@dimen/_10sdp"
+
+            app:cardElevation="@dimen/_3sdp">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_20sdp"
+                android:layout_marginTop="@dimen/_12sdp"
+                android:layout_marginEnd="@dimen/_10sdp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="HOME CLEANING"
+                        android:textColor="@color/grey_41"
+                        android:textSize="@dimen/_12sdp"
+                        android:textStyle="bold"
+
+
+                        />
+
+                    <TextView
+                        android:id="@+id/tvSummary"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:text="If you’re unable to clean your house and need help from friendly, hand-picked and experienced professionals, just hit the book button."
+                        android:textColor="@color/grey_41"
+                        android:textSize="@dimen/_12sdp"
+
+                        />
+
+                    <TextView
+                        android:id="@+id/tvBookNow"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:drawableRight="@drawable/arrow_svg"
+                        android:drawablePadding="@dimen/_10sdp"
+                        android:text="Book Now"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_12sdp" />
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+
+        </com.google.android.material.card.MaterialCardView>
+    </RelativeLayout>
+</com.google.android.material.card.MaterialCardView>

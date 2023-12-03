@@ -537,7 +537,7 @@ public class HomeModel {
         public void setSectionnew(List<Sectionnew> sectionnew) {
             this.sectionnew = sectionnew;
         }
-        public List<Sectionnew> getSectionnew() {
+            public List<Sectionnew> getSectionnew() {
             return sectionnew;
         }
 

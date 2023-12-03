@@ -10,18 +10,23 @@
         android:id="@+id/flFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/bottomNavigationView"/>
+        android:layout_above="@+id/cvCard"/>
 
-
+<androidx.cardview.widget.CardView
+    android:id="@+id/cvCard"
+    android:layout_width="match_parent"
+    android:layout_alignParentBottom="true"
+    app:cardElevation="@dimen/_5sdp"
+    app:cardBackgroundColor="@color/white"
+    android:layout_height="60dp">
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
+        android:layout_height="60dp"
         android:layout_alignParentBottom="true"
         android:layout_marginTop="5dp"
-        android:background="@drawable/bottom_nav_custom"
-        app:itemTextColor="@color/yellow_font"
+        app:itemTextColor="@color/red"
         app:itemIconTint="@drawable/bottom_nav_icon_color"
         app:menu="@menu/bottom_nav_bar" />
-
+</androidx.cardview.widget.CardView>
 </RelativeLayout>

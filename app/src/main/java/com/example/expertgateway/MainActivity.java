@@ -37,6 +37,12 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         switch (item.getItemId()) {
             case R.id.home:
                 getSupportFragmentManager().beginTransaction().replace(R.id.flFragment, homeFragment).commit();
+                // Detach the fragment
+                getSupportFragmentManager().beginTransaction().detach(homeFragment).commit();
+
+                // Attach the fragment (this will trigger onCreateView)
+                getSupportFragmentManager().beginTransaction().attach(homeFragment).commit();
+
                 return true;
 
         }

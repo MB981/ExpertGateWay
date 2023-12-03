@@ -1,18 +1,18 @@
 package com.example.expertgateway.FragmentsModule;
 
-import android.app.Dialog;
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
-import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.example.expertgateway.Adapters.BannerAdapter;
+import com.example.expertgateway.Adapters.WhatsNewRecyclerAdapter;
 import com.example.expertgateway.Helper.ApiClient;
 import com.example.expertgateway.Helper.ApiService;
 import com.example.expertgateway.Model.HomeModel;
@@ -34,6 +34,7 @@ public class HomeFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    WhatsNewRecyclerAdapter mWhatsNewAdapter;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -68,7 +69,7 @@ public class HomeFragment extends Fragment {
     }
 
     public void getHome() {
-
+        startShimmer();
         ApiService apiService = ApiClient.getClient().create(ApiService.class);
         Call<HomeModel> call = apiService.getHome();
         call.enqueue(new Callback<HomeModel>() {
@@ -82,9 +83,14 @@ public class HomeFragment extends Fragment {
                     getActivity().runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-//                            getActivity().getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+                            stopShimmer();
+                            mWhatsNewAdapter = new WhatsNewRecyclerAdapter(keyModel.getResult().getSectionsDetails(), getActivity());
+                            binding.newrecycler.setLayoutManager(new LinearLayoutManager(getActivity()));
+                            binding.newrecycler.setAdapter(mWhatsNewAdapter);
 
-                            Toast.makeText(getActivity(), "" + keyModel.getMessage(), Toast.LENGTH_SHORT).show();
+                            Glide.with(getActivity())
+                                    .load(keyModel.getResult().getSectionsDetails().get(0).getImageUrl())
+                                    .into(binding.imgView);
 
                         }
                     });
@@ -93,8 +99,8 @@ public class HomeFragment extends Fragment {
                     getActivity().runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            Snackbar.make(getActivity().findViewById(android.R.id.content),
-                                    "Data is null", Snackbar.LENGTH_LONG).show();
+                            stopShimmer();
+                            Toast.makeText(getActivity(), "Data is null", Toast.LENGTH_SHORT).show();
                         }
                     });
                 }
@@ -106,11 +112,34 @@ public class HomeFragment extends Fragment {
 
                     @Override
                     public void run() {
-                        Snackbar.make(getActivity().findViewById(android.R.id.content),
-                                "Response Failed", Snackbar.LENGTH_LONG).show();
+//                        Snackbar.make(getActivity().findViewById(android.R.id.content),
+//                                "Response Failed", Snackbar.LENGTH_LONG).show();
+                        Toast.makeText(getActivity(), "Response Failed", Toast.LENGTH_SHORT).show();
+                        stopShimmer();
                     }
                 });
             }
         });
     }
+
+    public void startShimmer() {
+        binding.nvScroll.setVisibility(View.GONE);
+        binding.rlShimmerView.setVisibility(View.VISIBLE);
+
+    }
+
+    public void stopShimmer() {
+        binding.nvScroll.setVisibility(View.VISIBLE);
+        binding.rlShimmerView.setVisibility(View.GONE);
+
+    }
+
+/*    public void servicesAdapter(List<HomeModel.Sectionnew> services) {
+        // Assuming binding.rlServices is your RecyclerView
+        binding.rlServices.setLayoutManager(new GridLayoutManager(getActivity(), 5));
+// Set your adapter
+        ServicesAdapter servicesAdapter = new ServicesAdapter(services, getActivity());
+        binding.rlServices.setAdapter(servicesAdapter);
+
+    }*/
 }
