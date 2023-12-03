@@ -2,8 +2,10 @@ package com.example.expertgateway.FragmentsModule;
 
 import android.os.Bundle;
 
+import androidx.core.widget.NestedScrollView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -64,11 +66,26 @@ public class HomeFragment extends Fragment {
         // Inflate the layout for this fragment
         binding = FragmentHomeBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
+
+        binding.swSwipe.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                binding.swSwipe.setRefreshing(true);
+
+                getHome();
+
+            }
+        });
+        binding.swSwipe.setColorSchemeResources(R.color.red,
+                android.R.color.holo_red_dark,
+                android.R.color.holo_blue_dark,
+                android.R.color.holo_red_light);
         getHome();
         return view;
     }
 
     public void getHome() {
+        binding.swSwipe.setRefreshing(true);
         startShimmer();
         ApiService apiService = ApiClient.getClient().create(ApiService.class);
         Call<HomeModel> call = apiService.getHome();
@@ -83,6 +100,7 @@ public class HomeFragment extends Fragment {
                     getActivity().runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
+                            binding.swSwipe.setRefreshing(false);
                             stopShimmer();
                             mWhatsNewAdapter = new WhatsNewRecyclerAdapter(keyModel.getResult().getSectionsDetails(), getActivity());
                             binding.newrecycler.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -99,6 +117,7 @@ public class HomeFragment extends Fragment {
                     getActivity().runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
+                            binding.swSwipe.setRefreshing(false);
                             stopShimmer();
                             Toast.makeText(getActivity(), "Data is null", Toast.LENGTH_SHORT).show();
                         }
@@ -114,6 +133,7 @@ public class HomeFragment extends Fragment {
                     public void run() {
 //                        Snackbar.make(getActivity().findViewById(android.R.id.content),
 //                                "Response Failed", Snackbar.LENGTH_LONG).show();
+                        binding.swSwipe.setRefreshing(false);
                         Toast.makeText(getActivity(), "Response Failed", Toast.LENGTH_SHORT).show();
                         stopShimmer();
                     }

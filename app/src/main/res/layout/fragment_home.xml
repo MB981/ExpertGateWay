@@ -176,60 +176,68 @@
 
     </LinearLayout>
 
-    <androidx.core.widget.NestedScrollView
-        android:id="@+id/nvScroll"
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swSwipe"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="gone"
-        android:layout_below="@+id/llHeaderMain">
+        android:layout_below="@+id/llHeaderMain"
+       >
 
-        <RelativeLayout
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/nvScroll"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent"
+            android:visibility="gone">
 
             <RelativeLayout
-                android:id="@+id/rvBanner"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_150sdp"
-                android:layout_marginHorizontal="@dimen/_12sdp"
-                android:layout_marginTop="@dimen/_10sdp">
+                android:layout_height="wrap_content">
 
-                <com.google.android.material.card.MaterialCardView
-
+                <RelativeLayout
+                    android:id="@+id/rvBanner"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_150sdp"
-                    android:layout_centerInParent="true"
-                    android:background="@color/grey_41"
-                    android:elevation="@dimen/_3sdp"
-                    app:cardBackgroundColor="@color/white"
-                    app:cardCornerRadius="@dimen/_10sdp">
+                    android:layout_marginHorizontal="@dimen/_12sdp"
+                    android:layout_marginTop="@dimen/_10sdp">
 
-                    <ImageView
-                        android:id="@+id/imgView"
+                    <com.google.android.material.card.MaterialCardView
+
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_150sdp"
-                        android:layout_gravity="center"
-                        android:scaleType="centerCrop" />
-                </com.google.android.material.card.MaterialCardView>
+                        android:layout_centerInParent="true"
+                        android:background="@color/grey_41"
+                        android:elevation="@dimen/_3sdp"
+                        app:cardBackgroundColor="@color/white"
+                        app:cardCornerRadius="@dimen/_10sdp">
+
+                        <ImageView
+                            android:id="@+id/imgView"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_150sdp"
+                            android:layout_gravity="center"
+                            android:scaleType="centerCrop" />
+                    </com.google.android.material.card.MaterialCardView>
+                </RelativeLayout>
+
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/newrecycler"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/rvBanner"
+                    android:layout_marginHorizontal="@dimen/_2sdp"
+                    android:layout_marginTop="@dimen/_7sdp"
+                    android:layout_marginBottom="@dimen/_10sdp"
+
+                    />
+
+
             </RelativeLayout>
 
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/newrecycler"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/rvBanner"
-                android:layout_marginHorizontal="@dimen/_2sdp"
-                android:layout_marginTop="@dimen/_7sdp"
-                android:layout_marginBottom="@dimen/_10sdp"
+        </androidx.core.widget.NestedScrollView>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
-                />
-
-
-        </RelativeLayout>
-
-
-    </androidx.core.widget.NestedScrollView>
     <RelativeLayout
         android:id="@+id/rlShimmerView"
         android:layout_width="match_parent"

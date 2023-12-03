@@ -23,7 +23,8 @@
                 android:id="@+id/ivImage"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/grey_41" />
+                android:background="@color/grey_41"
+                android:scaleType="fitXY"/>
 
             <RelativeLayout
                 android:layout_width="match_parent"
